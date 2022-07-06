@@ -83,16 +83,12 @@ class _TextEditorState extends State<TextEditor> {
                       widget.task!.title = newTask.title;
                       widget.task!.note = newTask.note;
                       widget.task!.save();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                      Navigator.pop(context);
                     } else {
                       // TODO: Add a .then() method to execute Navigation after your task has been added
-                      await taskBox.add(newTask).then((value) => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage())));
+                      await taskBox
+                          .add(newTask)
+                          .then((value) => Navigator.pop(context));
                     }
                   },
                   fillColor: Colors.blueAccent.shade700,
